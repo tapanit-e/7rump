@@ -681,22 +681,7 @@ trump.EvaluatorFunctions.arrayFunctions = {
 };
 
 trump.EvaluatorFunctions.functions = {
-		
-	sin: Math.sin,
-	cos: Math.cos,
-	tan: Math.cos,
-	asin: Math.asin,
-	acos: Math.acos,
-	atan: Math.atan,
-	abs: Math.abs,
-	round: Math.round,
-	ceil: Math.ceil,
-	floor: Math.floor,
-	log: Math.log,
-	exp: Math.exp,
-	sqrt: Math.sqrt,
-	max: Math.max,
-	min: Math.min,
+	
 	random: Math.random,
 	array: trump.EvaluatorFunctions.arrayFunctions.array,
 	add: trump.EvaluatorFunctions.arrayFunctions.add,
