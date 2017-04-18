@@ -1,5 +1,7 @@
 # 7rump
 
+Simple programming language based on quotes by Donald Trump
+
 test script in index.html
 
 index.html uses ace.js code editor
