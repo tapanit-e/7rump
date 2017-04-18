@@ -356,7 +356,7 @@ trump.Parser = function(tokens) {
 	this.infix('NOT_A_WAR_HERO', 7);
 	this.prefix('I_DONT_THINK_I_AM_GOING_TO_LOSE_BUT_IF', 3);
 	this.prefix('BABY_CRYING_WHILE_I_AM_SPEAKING', 3);
-	this.prefix('I_AM_SPEAKING_WITH_MYSELF', 1); // ?
+	this.prefix('I_AM_SPEAKING_WITH_MYSELF', 1);
 	this.postfix('OUT_OF_CONTROL');
 	this.postfix('END_JOB_KILLING');
 	this.postfix('AMAZING');
