@@ -624,12 +624,7 @@ trump.EvaluatorFunctions.operators = {
 	
 };
 
-trump.EvaluatorFunctions.variables = {
-		
-	pi: Math.PI,
-	e: Math.E
-	
-};
+trump.EvaluatorFunctions.variables = {};
 
 trump.EvaluatorFunctions.arrayFunctions = {
 
