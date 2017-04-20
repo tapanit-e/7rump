@@ -38,6 +38,7 @@ trump.operators = {
 trump.LexerFunctions = {
 	
 	isOperator: function(c) { return /[(),]/.test(c); },
+	isNegative: function(c) { return c === '-' },
 	isDigit: function(c) { return /[0-9]/.test(c); },
 	isWhiteSpace: function(c) { return /\s/.test(c); },
 	isString: function(c) { return c === '\''; },
@@ -91,6 +92,29 @@ trump.Lexer = function(input) {
 			this.addToken(this.c);
 			this.advance();
 		
+		} else if (trump.LexerFunctions.isNegative(this.c)) {
+		
+			var num = this.c;
+			
+			while (trump.LexerFunctions.isDigit(this.advance())) num += this.c;
+			
+			if (this.c === '.') {
+			
+				do {
+					num += this.c; 
+				} while (trump.LexerFunctions.isDigit(this.advance()));
+			
+			}
+			
+			if (num === '-')
+				throw new Error('Unexpected token -');
+			
+			num = parseFloat(num);
+			
+			if (! isFinite(num)) throw new Error('Number is too large or too small');
+			
+			this.addToken('number', num);
+		
 		} else if (trump.LexerFunctions.isDigit(this.c)) {
 		
 			var num = this.c;
@@ -99,7 +123,9 @@ trump.Lexer = function(input) {
 			
 			if (this.c === '.') {
 			
-				do num += this.c; while (trump.LexerFunctions.isDigit(this.advance()));
+				do {
+					num += this.c; 
+				} while (trump.LexerFunctions.isDigit(this.advance()));
 			
 			}
 			
@@ -342,8 +368,8 @@ trump.Parser = function(tokens) {
 		return value;
 	
 	});
-
-	this.prefix('-', 7);
+	
+	
 	this.infix('SO_GREAT', 6, 5);
 	this.infix('I_SORTA_GET_AWAY_WITH_THINGS_LIKE_THAT', 4);
 	this.infix('BECAUSE_THEY_LET_YOU_DOWN', 4);
