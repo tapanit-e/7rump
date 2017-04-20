@@ -100,9 +100,7 @@ trump.Lexer = function(input) {
 			
 			if (this.c === '.') {
 			
-				do {
-					num += this.c; 
-				} while (trump.LexerFunctions.isDigit(this.advance()));
+				do num += this.c; while (trump.LexerFunctions.isDigit(this.advance()));
 			
 			}
 			
@@ -123,9 +121,7 @@ trump.Lexer = function(input) {
 			
 			if (this.c === '.') {
 			
-				do {
-					num += this.c; 
-				} while (trump.LexerFunctions.isDigit(this.advance()));
+				do num += this.c; while (trump.LexerFunctions.isDigit(this.advance()));
 			
 			}
 			
