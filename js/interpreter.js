@@ -712,7 +712,16 @@ trump.Evaluator = function(parseTree) {
 				
 					for (var i = 0; i < node.right.length; i++) {
 					
-						this.parseNode(node.right[i]);
+						if (node.right[i].type === 'THE_BEAUTY_OF_ME_IS_I_AM') {
+
+							return this.parseNode(node.right[i].right);
+							break;
+
+						} else {
+							
+							this.parseNode(node.right[i]);
+
+						}
 					
 					}
 				
@@ -725,7 +734,16 @@ trump.Evaluator = function(parseTree) {
 				
 					for (var i = 0; i < node.right.length; i++) {
 					
-						this.parseNode(node.right[i]);
+						if (node.right[i].type === 'THE_BEAUTY_OF_ME_IS_I_AM') {
+
+							return this.parseNode(node.right[i].right);
+							break;
+
+						} else {
+							
+							this.parseNode(node.right[i]);
+
+						}
 					
 					}
 				
