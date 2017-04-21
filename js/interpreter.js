@@ -92,7 +92,8 @@ trump.Lexer = function(input) {
 			this.addToken(this.c);
 			this.advance();
 		
-		} else if (trump.LexerFunctions.isNegative(this.c)) {
+		} else if (trump.LexerFunctions.isNegative(this.c) || 
+			  trump.LexerFunctions.isDigit(c)) {
 		
 			var num = this.c;
 			
@@ -111,24 +112,6 @@ trump.Lexer = function(input) {
 			
 			if (! isFinite(num)) throw new Error('Number is too large or too small');
 			
-			this.addToken('number', num);
-		
-		} else if (trump.LexerFunctions.isDigit(this.c)) {
-		
-			var num = this.c;
-		
-			while (trump.LexerFunctions.isDigit(this.advance())) num += this.c;
-			
-			if (this.c === '.') {
-			
-				do num += this.c; while (trump.LexerFunctions.isDigit(this.advance()));
-			
-			}
-			
-			num = parseFloat(num);
-			
-			if (! isFinite(num)) throw new Error('Number is too large or too small');
-		
 			this.addToken('number', num);
 		
 		} else if (trump.LexerFunctions.isIdentifier(this.c)) {
@@ -163,8 +146,6 @@ trump.Lexer = function(input) {
 		}
 	
 	}
-	
-	return this.tokens;
 
 };
 
@@ -445,8 +426,6 @@ trump.Parser = function(tokens) {
 	this.parseTree = [];
 	
 	this.buildBlocks(arr, this.parseTree);
-		
-	return this.parseTree;
 	
 };
 
@@ -833,11 +812,30 @@ trump.Evaluator = function(parseTree) {
 };
 
 trump.init = function(input) {
+	
+	var trumpInterpreter = {};
+	
+	try {
 
-	var lex = new trump.Lexer(input);
+		var lex = new trump.Lexer(input);
 
-	var parseTree = new trump.Parser(lex);
+		var parser = new trump.Parser(lex.tokens);
 
-	new trump.Evaluator(parseTree);
+		var evaluator = new trump.Evaluator(parser.parseTree);
+	
+		trumpInterpreter.input = input;
+		trumpInterpreter.lexer = lex;
+		trumpInterpreter.parser = parser;
+		trumpInterpreter.evaluator = evaluator;
+		
+	} catch (e) { 
+		
+		console.log(e); 
+	
+	} finally {
+	
+		return trumpInterpreter;
+		
+	}
 
 };
