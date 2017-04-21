@@ -93,7 +93,7 @@ trump.Lexer = function(input) {
 			this.advance();
 		
 		} else if (trump.LexerFunctions.isNegative(this.c) || 
-			  trump.LexerFunctions.isDigit(c)) {
+			  trump.LexerFunctions.isDigit(this.c)) {
 		
 			var num = this.c;
 			
