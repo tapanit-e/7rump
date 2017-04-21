@@ -711,11 +711,11 @@ trump.Evaluator = function(parseTree) {
 				if (trump.EvaluatorFunctions.operators[node.type](this.parseNode(node.left))) {
 				
 					for (var i = 0; i < node.right.length; i++) {
-					
+
 						if (node.right[i].type === 'THE_BEAUTY_OF_ME_IS_I_AM') {
 
-							return this.parseNode(node.right[i].right);
-							break;
+							return node.right[i];
+							
 
 						} else {
 							
@@ -735,9 +735,8 @@ trump.Evaluator = function(parseTree) {
 					for (var i = 0; i < node.right.length; i++) {
 					
 						if (node.right[i].type === 'THE_BEAUTY_OF_ME_IS_I_AM') {
-
-							return this.parseNode(node.right[i].right);
-							break;
+							
+							return node.right[i];
 
 						} else {
 							
@@ -798,14 +797,21 @@ trump.Evaluator = function(parseTree) {
 				
 					if (node.value[i].type === 'THE_BEAUTY_OF_ME_IS_I_AM') {
 					
-						ret = self.parseNode(node.value[i].right)
+						ret = self.parseNode(node.value[i].right);
 						break;
 					
 					} else {
 						
 						var parse = node.value[i];
 						
-						self.parseNode(parse);
+						var type = self.parseNode(parse);
+
+						if (type && type.type === 'THE_BEAUTY_OF_ME_IS_I_AM') {
+
+							ret = self.parseNode(type.right);
+							break;
+
+						}
 						
 					}
 				
