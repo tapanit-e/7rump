@@ -719,7 +719,10 @@ trump.Evaluator = function(parseTree) {
 
 						} else {
 							
-							this.parseNode(node.right[i]);
+							var ret = this.parseNode(node.right[i]);
+							
+							if (ret && ret.type === 'THE_BEAUTY_OF_ME_IS_I_AM')
+								return ret;
 
 						}
 					
@@ -740,7 +743,10 @@ trump.Evaluator = function(parseTree) {
 
 						} else {
 							
-							this.parseNode(node.right[i]);
+							var ret = this.parseNode(node.right[i]);
+							
+							if (ret && ret.type === 'THE_BEAUTY_OF_ME_IS_I_AM')
+								return ret;
 
 						}
 					
