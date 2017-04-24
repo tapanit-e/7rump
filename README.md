@@ -1,6 +1,4 @@
-# 7rump
-
-## Simple programming language based on quotes by Donald Trump
+## Simple programming language based on quotes of Donald Trump
 
 ### test script in index.html
 
