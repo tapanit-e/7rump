@@ -1,5 +1,6 @@
 /*
- * added: outputs, booleans, keywords, string, multiline functions, returns, loops, conditions, conditional operators, eols, script-tags, postfixes
+ * added: outputs, booleans, keywords, string, multiline functions, returns, loops, conditions, conditional operators, eols, script-tags, postfixes, comments,
+ * new lines...
  */
 
 'use strict';
@@ -37,6 +38,8 @@ trump.operators = {
 
 trump.LexerFunctions = {
 	
+	isComment: function(c) { return c === '#' },
+	isNewLine: function(c) { return /[\n\r]/.test(c) },
 	isOperator: function(c) { return /[(),]/.test(c); },
 	isNegative: function(c) { return c === '-' },
 	isDigit: function(c) { return /[0-9]/.test(c); },
@@ -74,7 +77,12 @@ trump.Lexer = function(input) {
 	
 		this.c = input[this.i];
 		
-		if (trump.LexerFunctions.isString(this.c)) {
+		
+		if (trump.LexerFunctions.isComment(this.c)) {
+		
+			while (! trump.LexerFunctions.isNewLine(this.advance()));
+		
+		} else if (trump.LexerFunctions.isString(this.c)) {
 		
 			var idn = '';
 		
