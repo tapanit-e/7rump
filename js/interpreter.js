@@ -1,6 +1,6 @@
 /*
  * added: outputs, booleans, keywords, string, multiline functions, returns, loops, conditions, conditional operators, eols, script-tags, postfixes, comments,
- * new lines...
+ * new lines, breaks, continues, arrays
  */
 
 'use strict';
@@ -31,7 +31,9 @@ trump.operators = {
 	'YOU_CAN_NEVER_BE_TOO_GREEDY': 'endfunction',
 	'THE_POINT_IS': 'beginfunction',
 	'I_AM_SPEAKING_WITH_MYSELF': 'output',
-	'THE_BEAUTY_OF_ME_IS_I_AM': 'return'
+	'THE_BEAUTY_OF_ME_IS_I_AM': 'return',
+	'I_WOULD_NOT_LOSE_VOTERS': 'break',
+	'GREAT_AGAIN': 'continue'
 	
 };
 
@@ -45,10 +47,18 @@ trump.LexerFunctions = {
 	isDigit: function(c) { return /[0-9]/.test(c); },
 	isWhiteSpace: function(c) { return /\s/.test(c); },
 	isString: function(c) { return c === '\''; },
-	isIdentifier: function(c) { return typeof c === 'string' && ! trump.LexerFunctions.isDigit(c) &&
-		! trump.LexerFunctions.isWhiteSpace(c) &&
-		! trump.LexerFunctions.isOperator(c) &&
-		! trump.LexerFunctions.isString(c); }
+	isIdentifier: function(c) { 
+	
+		return typeof c === 'string' && 
+			! trump.LexerFunctions.isDigit(c) &&
+			! trump.LexerFunctions.isWhiteSpace(c) &&
+			! trump.LexerFunctions.isOperator(c) &&
+			! trump.LexerFunctions.isString(c) &&
+			! trump.LexerFunctions.isComment(c) &&
+			! trump.LexerFunctions.isNewLine(c) &&
+			! trump.LexerFunctions.isNegative(c); 
+	
+	}
 
 };
 
@@ -374,6 +384,8 @@ trump.Parser = function(tokens) {
 	this.infix('AND_BEAUTIFUL_PIECE_OF', 4);
 	this.infix('PLAY_GOLF_OR', 5);
 	this.postfix('ITS_HUGE');
+	this.postfix('GREAT_AGAIN');
+	this.postfix('I_WOULD_NOT_LOSE_VOTERS');
 	this.postfix('YOU_CAN_NEVER_BE_TOO_GREEDY');
 	this.postfix('THE_POINT_IS');
 	this.prefix('THE_BEAUTY_OF_ME_IS_I_AM', 1);
@@ -724,7 +736,10 @@ trump.Evaluator = function(parseTree) {
 
 							return node.right[i];
 							
-
+						} else if (node.right[i].type === 'I_WOULD_NOT_LOSE_VOTERS' || node.right[i].type === 'GREAT_AGAIN') {
+						
+							return node.right[i];
+						
 						} else {
 							
 							var ret = this.parseNode(node.right[i]);
@@ -741,20 +756,34 @@ trump.Evaluator = function(parseTree) {
 				
 			} else if (node.type === 'BABY_CRYING_WHILE_I_AM_SPEAKING') {
 			
+				outer:
 				while (trump.EvaluatorFunctions.operators[node.type](this.parseNode(node.left))) {
 				
+					inner:
 					for (var i = 0; i < node.right.length; i++) {
 					
 						if (node.right[i].type === 'THE_BEAUTY_OF_ME_IS_I_AM') {
 							
 							return node.right[i];
 
+						} else if (node.right[i].type === 'I_WOULD_NOT_LOSE_VOTERS') {
+						
+							break outer;
+						
+						} else if (node.right[i].type === 'GREAT_AGAIN') {
+						
+							continue outer;
+						
 						} else {
 							
 							var ret = this.parseNode(node.right[i]);
 							
 							if (ret && ret.type === 'THE_BEAUTY_OF_ME_IS_I_AM')
 								return ret;
+							else if (ret && ret.type === 'I_WOULD_NOT_LOSE_VOTERS')
+								break outer;
+							else if (ret && ret.type === 'GREAT_AGAIN')
+								continue outer;
 
 						}
 					
