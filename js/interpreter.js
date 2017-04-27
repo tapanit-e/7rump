@@ -162,7 +162,7 @@ trump.Parser = function(tokens) {
 			
 			lbp: sym.lbp || lbp,
 			nud: sym.nud || nud,
-			led: sym.lef || led
+			led: sym.led || led
 		
 		};
 	
@@ -197,7 +197,7 @@ trump.Parser = function(tokens) {
 	this.expression = function(rbp) {
 		
 		var left 	= null, 
-			t 		= this.token();
+		    t 		= this.token();
 		
 		this.advance();
 		
