@@ -32,4 +32,6 @@
 | THE_POINT_IS | beginfunction |
 | I_AM_SPEAKING_WITH_MYSELF | console.log |
 | THE_BEAUTY_OF_ME_IS_I_AM | return |
+| GREAT_AGAIN | continue |
+| I_WOULD_NOT_LOSE_VOTERS | break |
 | # | one line comment |
