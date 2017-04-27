@@ -733,13 +733,13 @@ trump.EvaluatorFunctions.arrayFunctions = {
 
 trump.EvaluatorFunctions.functions = {
 	
-	random: Math.random,
-	array: trump.EvaluatorFunctions.arrayFunctions.array,
-	add: trump.EvaluatorFunctions.arrayFunctions.add,
-	length: trump.EvaluatorFunctions.arrayFunctions.length,
-	'set': trump.EvaluatorFunctions.arrayFunctions.set,
-	'get': trump.EvaluatorFunctions.arrayFunctions.get,
-	remove: trump.EvaluatorFunctions.arrayFunctions.remove
+	'random': 	Math.random,
+	'array': 	trump.EvaluatorFunctions.arrayFunctions.array,
+	'add': 		trump.EvaluatorFunctions.arrayFunctions.add,
+	'length':	trump.EvaluatorFunctions.arrayFunctions.length,
+	'set': 		trump.EvaluatorFunctions.arrayFunctions.set,
+	'get': 		trump.EvaluatorFunctions.arrayFunctions.get,
+	'remove': 	trump.EvaluatorFunctions.arrayFunctions.remove
 	
 };
 
