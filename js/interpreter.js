@@ -40,13 +40,48 @@ trump.operators = {
 
 trump.LexerFunctions = {
 	
-	isComment: function(c) { return c === '#' },
-	isNewLine: function(c) { return /[\n\r]/.test(c) },
-	isOperator: function(c) { return /[(),]/.test(c); },
-	isNegative: function(c) { return c === '-' },
-	isDigit: function(c) { return /[0-9]/.test(c); },
-	isWhiteSpace: function(c) { return /\s/.test(c); },
-	isString: function(c) { return c === '\''; },
+	isComment: function(c) { 
+		
+		return c === '#';
+	
+	},
+	
+	isNewLine: function(c) { 
+		
+		return /[\n\r]/.test(c);
+	
+	},
+	
+	isOperator: function(c) { 
+		
+		return /[(),]/.test(c);
+	
+	},
+	
+	isNegative: function(c) { 
+		
+		return c === '-';
+	
+	},
+	
+	isDigit: function(c) { 
+		
+		return /[0-9]/.test(c);
+	
+	},
+	
+	isWhiteSpace: function(c) { 
+		
+		return /\s/.test(c);
+	
+	},
+	
+	isString: function(c) { 
+		
+		return c === '\'';
+	
+	},
+	
 	isIdentifier: function(c) { 
 	
 		return typeof c === 'string' && 
