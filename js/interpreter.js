@@ -41,45 +41,45 @@ trump.operators = {
 trump.LexerFunctions = {
 	
 	isComment: function(c) { 
-		
-		return c === '#';
+	
+		return c === '#'; 
 	
 	},
 	
 	isNewLine: function(c) { 
-		
-		return /[\n\r]/.test(c);
 	
+		return /[\n\r]/.test(c);
+		
 	},
 	
 	isOperator: function(c) { 
-		
-		return /[(),]/.test(c);
 	
+		return /[(),]/.test(c);
+		
 	},
 	
 	isNegative: function(c) { 
-		
-		return c === '-';
 	
+		return c === '-';
+		
 	},
 	
 	isDigit: function(c) { 
-		
-		return /[0-9]/.test(c);
 	
+		return /[0-9]/.test(c); 
+		
 	},
 	
 	isWhiteSpace: function(c) { 
-		
-		return /\s/.test(c);
 	
+		return /\s/.test(c);
+		
 	},
 	
 	isString: function(c) { 
-		
-		return c === '\'';
 	
+		return c === '\''; 
+		
 	},
 	
 	isIdentifier: function(c) { 
@@ -733,13 +733,13 @@ trump.EvaluatorFunctions.arrayFunctions = {
 
 trump.EvaluatorFunctions.functions = {
 	
-	'random': 	Math.random,
-	'array': 	trump.EvaluatorFunctions.arrayFunctions.array,
-	'add': 		trump.EvaluatorFunctions.arrayFunctions.add,
-	'length':	trump.EvaluatorFunctions.arrayFunctions.length,
-	'set': 		trump.EvaluatorFunctions.arrayFunctions.set,
-	'get': 		trump.EvaluatorFunctions.arrayFunctions.get,
-	'remove': 	trump.EvaluatorFunctions.arrayFunctions.remove
+	'random': Math.random,
+	'array': trump.EvaluatorFunctions.arrayFunctions.array,
+	'add': trump.EvaluatorFunctions.arrayFunctions.add,
+	'length': trump.EvaluatorFunctions.arrayFunctions.length,
+	'set': trump.EvaluatorFunctions.arrayFunctions.set,
+	'get': trump.EvaluatorFunctions.arrayFunctions.get,
+	'remove': trump.EvaluatorFunctions.arrayFunctions.remove
 	
 };
 
@@ -751,7 +751,9 @@ trump.Evaluator = function(parseTree) {
 
 	this.parseNode = function(node) {
 		
-		if (node.type === 'number' || node.type === 'string' || node.type === 'boolean') {
+		if (node.type === 'number' || 
+			node.type === 'string' || 
+			node.type === 'boolean') {
 		
 			return node.value;
 		
@@ -813,12 +815,19 @@ trump.Evaluator = function(parseTree) {
 							
 							var ret = this.parseNode(node.right[i]);
 							
-							if (ret && ret.type === 'THE_BEAUTY_OF_ME_IS_I_AM')
+							if (ret && ret.type === 'THE_BEAUTY_OF_ME_IS_I_AM') {
+							
 								return ret;
-							else if (ret && ret.type === 'I_WOULD_NOT_LOSE_VOTERS')
+							
+							} else if (ret && ret.type === 'I_WOULD_NOT_LOSE_VOTERS') {
+							
 								break outer;
-							else if (ret && ret.type === 'GREAT_AGAIN')
+							
+							} else if (ret && ret.type === 'GREAT_AGAIN') {
+							
 								continue outer;
+								
+							}
 
 						}
 					
