@@ -326,7 +326,6 @@ trump.Parser = function(tokens) {
 
 	this.symbol(',');
 	this.symbol(')');
-	this.symbol('(end)');
 
 	this.symbol('number', function(number) {
 		
@@ -490,27 +489,38 @@ trump.Parser.prototype.buildBlocks = function(tree, arr) {
 	
 		var temp = tree.shift();
 		
-		if (temp.type === 'BABY_CRYING_WHILE_I_AM_SPEAKING' || temp.type === 'I_DONT_THINK_I_AM_GOING_TO_LOSE_BUT_IF') {
-		
-			var tempArr = [];
+		if (temp.type === 'BABY_CRYING_WHILE_I_AM_SPEAKING' || 
+		    temp.type === 'I_DONT_THINK_I_AM_GOING_TO_LOSE_BUT_IF') {
+			
+			var block = [];
+			
 			temp.left = temp.right;
-			temp.right = tempArr;
+			temp.right = block;
+			
 			arr.push(temp);
+			
 			this.buildBlocks(tree, temp.right);
 			
 		
 		} else if (temp.type === 'function') {
 		
-			var tempArr = [];
+			var block = [];
 			var tempVal = temp.value;
-			temp.value = tempArr;
+			
+			temp.value = block;
+			
 			temp.value.push(tempVal);
+			
 			arr.push(temp);
+			
 			this.buildBlocks(tree, temp.value);
 		
-		} else if (temp.type === 'END_JOB_KILLING' || temp.type === 'OUT_OF_CONTROL' || temp.type === 'YOU_CAN_NEVER_BE_TOO_GREEDY') {
+		} else if (temp.type === 'END_JOB_KILLING' || 
+			   temp.type === 'OUT_OF_CONTROL' || 
+			   temp.type === 'YOU_CAN_NEVER_BE_TOO_GREEDY') {
 		
 			arr.push(temp);
+			
 			return;
 		
 		} else if (temp.type !== 'AMAZING') {
