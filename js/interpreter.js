@@ -176,7 +176,7 @@ trump.Lexer = function(input) {
 			if (idn in trump.operators) {
 		
 				this.addToken(idn);
-				this.advance()
+				this.advance();
 		
 			} else if (idn === 'FAKE_NEWS' || idn === 'ALTERNATIVE_FACT') {
 			
@@ -317,7 +317,7 @@ trump.Parser = function(tokens) {
 			
 				type: id
 			
-			}
+			};
 		
 		});
 	
