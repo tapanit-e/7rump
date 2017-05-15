@@ -17,6 +17,8 @@ trump.operators = {
 	'POLITICALLY_CORRECT': 'remainder',
 	'FREE_TRADE_IS': 'is',
 	'THE_GREATEST_TEMPERAMENT_THAT': 'greater',
+	'A_GREAT_GREAT_WALL': 'greater or equal',
+	'ARE_THEY_SMALL_HANDS': 'lesser or equal',
 	'A_VERY_LITTLE_GUY': 'less',
 	'KNOW_MORE_ABOUT': 'equals',
 	'BABY_CRYING_WHILE_I_AM_SPEAKING': 'repeat',
@@ -407,6 +409,8 @@ trump.Parser = function(tokens) {
 	this.infix('SOMETHING_ELSE_MUST_BE_SMALL', 3);
 	this.infix('A_VERY_LITTLE_GUY', 7);
 	this.infix('THE_GREATEST_TEMPERAMENT_THAT', 7);
+	this.infix('A_GREAT_GREAT_WALL', 7);
+	this.infix('ARE_THEY_SMALL_HANDS', 7);
 	this.infix('KNOW_MORE_ABOUT', 7);
 	this.infix('NOT_A_WAR_HERO', 7);
 	this.prefix('I_DONT_THINK_I_AM_GOING_TO_LOSE_BUT_IF', 3);
@@ -651,6 +655,18 @@ trump.EvaluatorFunctions.operators = {
 	'THE_GREATEST_TEMPERAMENT_THAT': function(a, b) {
 		
 		return a > b;
+		
+	},
+	
+	'A_GREAT_GREAT_WALL': function(a, b) {
+	
+		return a >= b;
+		
+	},
+	
+	'ARE_THEY_SMALL_HANDS': function(a, b) {
+	
+		return a <= b;
 		
 	},
 		
