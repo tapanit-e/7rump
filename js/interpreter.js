@@ -213,6 +213,7 @@ trump.Parser = function(tokens) {
 	this.symbol = function (id, nud, lbp, led) {
 		
 		var sym = this.symbols[id] || {};
+		
 		this.symbols[id] = {
 			
 			lbp: sym.lbp || lbp,
@@ -785,7 +786,8 @@ trump.Evaluator = function(parseTree) {
 		
 		} else if (trump.EvaluatorFunctions.operators[node.type]) {
 		
-			if (node.left && node.type !== 'I_DONT_THINK_I_AM_GOING_TO_LOSE_BUT_IF' && node.type !== 'BABY_CRYING_WHILE_I_AM_SPEAKING') {
+			if (node.left && node.type !== 'I_DONT_THINK_I_AM_GOING_TO_LOSE_BUT_IF' && 
+			    node.type !== 'BABY_CRYING_WHILE_I_AM_SPEAKING') {
 			
 				return trump.EvaluatorFunctions.operators[node.type](this.parseNode(node.left), this.parseNode(node.right));
 			
@@ -799,7 +801,8 @@ trump.Evaluator = function(parseTree) {
 
 							return node.right[i];
 							
-						} else if (node.right[i].type === 'I_WOULD_NOT_LOSE_VOTERS' || node.right[i].type === 'GREAT_AGAIN') {
+						} else if (node.right[i].type === 'I_WOULD_NOT_LOSE_VOTERS' || 
+							   node.right[i].type === 'GREAT_AGAIN') {
 						
 							return node.right[i];
 						
@@ -942,7 +945,7 @@ trump.Evaluator = function(parseTree) {
 		
 		var node = parseTree.shift();
 		
-		this.parseNode(node);;
+		this.parseNode(node);
 	
 	}
 
