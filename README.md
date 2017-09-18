@@ -36,4 +36,5 @@
 | THE_BEAUTY_OF_ME_IS_I_AM | return |
 | GREAT_AGAIN | continue |
 | I_WOULD_NOT_LOSE_VOTERS | break |
+| WE_NEED_GLOBAL_WARMING | input |
 | # | one line comment |

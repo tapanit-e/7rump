@@ -1,6 +1,6 @@
 /*
  * added: outputs, booleans, keywords, string, multiline functions, returns, loops, conditions, conditional operators, eols, script-tags, postfixes, comments,
- * new lines, breaks, continues, arrays
+ * new lines, breaks, continues, arrays, inputs
  */
 
 'use strict';
@@ -35,7 +35,8 @@ trump.operators = {
 	'I_AM_SPEAKING_WITH_MYSELF': 'output',
 	'THE_BEAUTY_OF_ME_IS_I_AM': 'return',
 	'I_WOULD_NOT_LOSE_VOTERS': 'break',
-	'GREAT_AGAIN': 'continue'
+	'GREAT_AGAIN': 'continue',
+	'WE_NEED_GLOBAL_WARMING': 'input'
 	
 };
 
@@ -428,6 +429,7 @@ trump.Parser = function(tokens) {
 	this.postfix('YOU_CAN_NEVER_BE_TOO_GREEDY');
 	this.postfix('THE_POINT_IS');
 	this.prefix('THE_BEAUTY_OF_ME_IS_I_AM', 1);
+	this.prefix('WE_NEED_GLOBAL_WARMING', 1);
 	
 	this.infix('FREE_TRADE_IS', 1, 2, function(left) {
 	
@@ -545,6 +547,13 @@ trump.Parser.prototype.buildBlocks = function(tree, arr) {
 trump.EvaluatorFunctions = {};
 
 trump.EvaluatorFunctions.operators = {
+
+	'WE_NEED_GLOBAL_WARMING': function(a) {
+	
+		return prompt(a, undefined);
+	
+	},
+
 		
 	'I_AM_BUILDING_A_WALL': function (a, b) {
 		
