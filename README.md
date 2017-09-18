@@ -1,4 +1,4 @@
-## Simple programming language based on quotes of Donald Trump
+## Turing complete programming language based on quotes of Donald Trump
 
 ### test script in index.html
 
