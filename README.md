@@ -1,8 +1,6 @@
 ## Turing complete programming language based on quotes of Donald Trump
 
-### test script in index.html
-
-### index.html uses ace.js code editor
+Test script in index.html; index.html uses ace.js code editor.
 
 | Keyword       | What is        |
 | ------------- |:-------------:| 
@@ -36,4 +34,4 @@
 | WE_NEED_GLOBAL_WARMING | input |
 | # | one line comment |
 
-based on arithmetic expression language 
+Based on arithmetic expression language. 
