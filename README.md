@@ -4,10 +4,7 @@
 
 ### index.html uses ace.js code editor
 
-#### based on ael
-
-
-| Keyword       | Whatis        |
+| Keyword       | What is        |
 | ------------- |:-------------:| 
 | I_DONT_THINK_I_AM_GOING_TO_LOSE_BUT_IF     | if | 
 | I_AM_BUILDING_A_WALL      | +      |
@@ -38,3 +35,5 @@
 | I_WOULD_NOT_LOSE_VOTERS | break |
 | WE_NEED_GLOBAL_WARMING | input |
 | # | one line comment |
+
+based on arithmetic expression language 
