@@ -1,5 +1,7 @@
 ## Turing complete programming language based on quotes of Donald Trump
 
+[Online interpreter. Open your JS console before execute](https://tapanit-e.github.io/7rump/)
+
 Test script in index.html; index.html uses ace.js code editor.
 
 | Keyword       | What is        |
